@@ -1,0 +1,110 @@
+        html {
+            scroll-behavior: Smooth;
+
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            font-family: "Palanquin", sans-serif;
+            background-color: #06171E;
+
+        }
+
+        .body {
+            display: flex;
+
+        }
+
+        h1 {
+            font-weight: bolder;
+            color: #ffffff;
+
+            font-size: 67px;
+        }
+
+
+
+        h2 {
+            display: flex;
+            font-weight: bold;
+            font-size: 80px;
+            color: #9F0908;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .header {
+            height: 81px;
+            padding-left: 96x;
+            display: flex;
+            justify-content: start;
+            background-color: #09212A;
+
+        }
+
+        .logo {
+            align-self: center;
+        }
+
+        .Logotext {
+            font-size: 45px;
+            font-weight: bold;
+            color: #ffffff;
+            align-self: center;
+
+        }
+
+        p {
+            margin: 0px;
+
+        }
+
+        .MainContent{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+        .gallery{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+
+
+        .footer {
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            height: 81px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #09212A;
+            padding-bottom: 10px;
+
+
+        }
+        .footerBox{
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 225px;
+            height: 65px;
+        }
+        .footerLogo {
+            margin: 0px;
+            width: 133.28px;
+
+
+        }
+        .footerText{
+            font-size: 14px;
+            color: #99ACB3;
+            align-self: center;
+
+        }
