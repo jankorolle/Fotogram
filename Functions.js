@@ -63,13 +63,13 @@ function myDialogHTML(dialogindex){
             <div class="dialogContent">
                 <header class="dialogheader">
                     <p class="dialogFileName">${myImages[dialogindex]}</p>
-                    <img class="dialogButtonclose" src=./IMG/cross.png aria-label="Dialog Schließen" onclick="closeDialog()"></img>
+                    <img class="dialogButtonclose" src=./IMG/close.png aria-label="Dialog Schließen" onclick="closeDialog()"></img>
                 </header>
                 <section>
                    <img class="dialogImg" src=./gallery/${myImages[dialogindex]}><img>
                 </section>
                 <footer class=dialogfooter>
-                    <img class="DialogNext" src=./IMG/back.png aria-label="Vorheriges Foto"></img>
+                    <img class="DialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto"></img>
                     <p>${dialogindex+1}/${myImages.length}</p>
                     <img class="DialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto"></img>
                 </footer>

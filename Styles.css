@@ -163,6 +163,19 @@
             align-items: center;
         }
 
+        .DialogImageBack {
+            border-radius: 50%;
+            background-color: #382428;
+            width: 60px;
+            height: 60px;
+            transform: rotateY(180deg);
+
+        }
+
+        .DialogImageBack:hover {
+            background-color: #1e1e23;
+        }
+
         .DialogNext {
             border-radius: 50%;
             background-color: #382428;
