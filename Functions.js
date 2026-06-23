@@ -11,3 +11,74 @@ let myImages = [
     "f1ba9135a20ea8343ad3d5732c6f8a541ec455b5.jpg",
     "f2b056a08d5edba809ca216fa6aa66a4bb612ea8.jpg",
 ]
+
+
+
+
+
+
+
+function galleryFunction() {
+    let galleryList = document.getElementById('gallery');
+    galleryList.innerHTML = ""
+
+
+    for (let galleryindex = 0; galleryindex < myImages.length; galleryindex++) {
+        galleryList.innerHTML += galleryHTML(galleryindex);
+    }
+
+}
+function galleryHTML(galleryindex) {
+    return `<div><img class="galleryImg" src=./gallery/${myImages[galleryindex]} onclick="openDialog(), myDialogFunction()"></img>
+
+</div>`;
+}
+
+function openDialog() {
+let dialogRef = document.getElementById('myDialog');
+    dialogRef.showModal();
+    dialogRef.classList.add("opened");
+ 
+}
+function closeDialog() {
+    let dialogRef = document.getElementById('myDialog');
+    dialogRef.close();
+    dialogRef.classList.remove("opened");
+}
+
+function myDialogFunction(){
+    let DialogList = document.getElementById('myDialog');
+    DialogList.innerHTML = ""
+
+
+    let dialogindex = 0
+    DialogList.innerHTML = myDialogHTML(dialogindex);
+    
+
+
+}
+
+function myDialogHTML(dialogindex){
+    return ` 
+            <div class="dialogContent">
+                <header class="dialogheader">
+                    <p class="dialogFileName">${myImages[dialogindex]}</p>
+                    <img class="dialogButtonclose" src=./IMG/cross.png aria-label="Dialog Schließen" onclick="closeDialog()"></img>
+                </header>
+                <section>
+                   <img class="dialogImg" src=./gallery/${myImages[dialogindex]}><img>
+                </section>
+                <footer class=dialogfooter>
+                    <img class="DialogNext" src=./IMG/back.png aria-label="Vorheriges Foto"></img>
+                    <p>${dialogindex+1}/${myImages.length}</p>
+                    <img class="DialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto"></img>
+                </footer>
+                `
+            
+
+}
+
+
+
+
+
