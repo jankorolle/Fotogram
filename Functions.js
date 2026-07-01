@@ -12,9 +12,7 @@ let myImages = [
     "f2b056a08d5edba809ca216fa6aa66a4bb612ea8.jpg",
 ]
 
-
-
-
+let currentDialogIndex = 0;
 
 
 
@@ -29,16 +27,16 @@ function galleryFunction() {
 
 }
 function galleryHTML(galleryindex) {
-    return `<div><img class="galleryImg" src=./gallery/${myImages[galleryindex]} onclick="openDialog(), myDialogFunction()"></img>
-
-</div>`;
+    return `<div><img class="galleryImg" role="button" src=./gallery/${myImages[galleryindex]} tabindex="0" alt="Picture number ${galleryindex + 1}" onclick="openDialog(); myDialogFunction(${galleryindex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); openDialog(); myDialogFunction(${galleryindex}); }"></img>
+            </div>`;
 }
 
 function openDialog() {
-let dialogRef = document.getElementById('myDialog');
+    let dialogRef = document.getElementById('myDialog');
+    dialogRef.addEventListener("keydown", dialogKeyNavigation);
     dialogRef.showModal();
     dialogRef.classList.add("opened");
- 
+
 }
 function closeDialog() {
     let dialogRef = document.getElementById('myDialog');
@@ -46,39 +44,83 @@ function closeDialog() {
     dialogRef.classList.remove("opened");
 }
 
-function myDialogFunction(){
+function myDialogFunction(galleryindex) {
     let DialogList = document.getElementById('myDialog');
-    DialogList.innerHTML = ""
+    DialogList.innerHTML = "";
+    currentDialogIndex = galleryindex;
+    DialogList.innerHTML = myDialogHTML(currentDialogIndex);
 
-
-    let dialogindex = 0
-    DialogList.innerHTML = myDialogHTML(dialogindex);
-    
 
 
 }
 
-function myDialogHTML(dialogindex){
-    return ` 
-            <div class="dialogContent">
-                <header class="dialogheader">
-                    <p class="dialogFileName">${myImages[dialogindex]}</p>
-                    <img class="dialogButtonclose" src=./IMG/close.png aria-label="Dialog Schließen" onclick="closeDialog()"></img>
-                </header>
-                <section>
-                   <img class="dialogImg" src=./gallery/${myImages[dialogindex]}><img>
-                </section>
-                <footer class=dialogfooter>
-                    <img class="DialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto"></img>
-                    <p>${dialogindex+1}/${myImages.length}</p>
-                    <img class="DialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto"></img>
-                </footer>
-                `
-            
+function myDialogHTML(currentDialogIndex) {
+    return `<div class="dialogBody" onclick="BubblingProtection(event)" >
+                <div class="dialogContent">
+                    <header class="dialogheader">
+                        <p class="dialogFileName">${myImages[currentDialogIndex]}</p>
+                        <img class="dialogButtonclose" src=./IMG/close.png  tabindex="0"  aria-label="Dialog Schließen" onclick="closeDialog()" onkeydown="if(event.code === 'Space') { event.preventDefault(); closeDialog();}">
+                    </header>
+                    <section>
+                        <img class="dialogImg" tabindex="0" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}"><img>
+                    </section>
+                    <footer class=dialogfooter>
+                        <img class="DialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="DialogPrevPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); DialogPrevPicture(${currentDialogIndex}); }" >
+                        <p>${currentDialogIndex + 1}/${myImages.length}</p>
+                        <img class="DialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto" tabindex="0" onclick="DialogNextPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); DialogNextPicture(${currentDialogIndex});}">
+                    </footer>
+                </div>
+            </div>
+            `
+
 
 }
 
+function BubblingProtection(event) {
+    event.stopPropagation()
+}
 
+function DialogNextPicture(currentDialogIndex) {
+    currentDialogIndex++;
+    if (currentDialogIndex >= myImages.length) {
+        currentDialogIndex = 0;
+
+    }
+
+
+    myDialogFunction(currentDialogIndex);
+
+    setTimeout(() => {
+        document.querySelector(".DialogNext").focus();
+    }, 0);
+
+}
+
+function DialogPrevPicture(currentDialogIndex) {
+    currentDialogIndex--;
+    if (currentDialogIndex < 0) {
+        currentDialogIndex = myImages.length - 1;
+
+    }
+
+    myDialogFunction(currentDialogIndex);
+
+    setTimeout(() => {
+        document.querySelector(".DialogImageBack").focus();
+    }, 0);
+
+}
+function dialogKeyNavigation(event) {
+    if (event.code === "ArrowLeft") {
+        event.preventDefault();
+        DialogPrevPicture(currentDialogIndex);
+    }
+
+    if (event.code === "ArrowRight") {
+        event.preventDefault();
+        DialogNextPicture(currentDialogIndex);
+    }
+}
 
 
 
