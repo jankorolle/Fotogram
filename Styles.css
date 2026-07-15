@@ -52,6 +52,7 @@
         main {
             padding-left: 80px;
             padding-right: 80px;
+            padding-bottom: 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -192,14 +193,14 @@
             background-color: #1e1e23;
         }
 
-        .dialogNext {
+        .dialogImageNext {
             border-radius: 50%;
             background-color: #382428;
             width: 50px;
             height: 50px;
         }
 
-        .dialogNext:hover {
+        .dialogImageNext:hover {
             background-color: #1e1e23;
         }
 
@@ -230,9 +231,11 @@
         }
 
         .footerText {
-            font-size: 14px;
+            
+            font-size: 18px;
             color: #99ACB3;
             align-self: center;
+            padding-bottom: 10px;
         }
 
         @media (Max-width: 800px) {
@@ -240,10 +243,7 @@
             h1 {
                 font-size: 35px;
             }
-
         }
-
-
 
         @media (Max-width: 600px) {
 
@@ -297,7 +297,7 @@
             }
 
             .DialogImageBack,
-            .DialogNext {
+            .DialogImageNext {
                 width: 50px;
                 height: 50px;
             }
@@ -311,7 +311,7 @@
             }
 
             .footerText {
-                font-size: 14px;
+                font-size: 16px;
             }
         }
 
@@ -376,7 +376,7 @@
             }
 
             .DialogImageBack,
-            .DialogNext {
+            .DialogImageNext {
                 width: 45px;
                 height: 45px;
             }
@@ -391,6 +391,6 @@
             }
 
             .footerText {
-                font-size: 12px;
+                font-size: 14px;
             }
         }

@@ -25,7 +25,7 @@ function galleryFunction() {
 
 }
 function galleryHTML(galleryindex) {
-    return `<div><img class="galleryImg" role="button" src=./gallery/${myImages[galleryindex]} tabindex="0" alt="Picture number ${galleryindex + 1}" onclick="openDialog(); myDialogFunction(${galleryindex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); openDialog(); myDialogFunction(${galleryindex}); }"></img>
+    return `<div><img class="galleryImg" role="button" src=./gallery/${myImages[galleryindex]} tabindex="0" alt="Picture number ${galleryindex + 1}" onclick="openDialog(); myDialogFunction(${galleryindex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); openDialog(); myDialogFunction(${galleryindex}); }">
             </div>`;
 }
 
@@ -49,7 +49,7 @@ function myDialogFunction(galleryindex) {
     DialogList.innerHTML = myDialogHTML(currentDialogIndex);
 }
 
-function myDialogHTML(currentDialogIndex) {
+function myDialogHTML() {
     return `<div class="dialogBody" onclick="bubblingProtection(event)" >
                 <div class="dialogContent">
                     <header class="dialogheader">
@@ -60,9 +60,9 @@ function myDialogHTML(currentDialogIndex) {
                         <img class="dialogImg" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}"><img>
                     </section>
                     <footer class=dialogfooter>
-                        <img class="dialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="dialogPrevPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); dialogPrevPicture(${currentDialogIndex}); }" >
+                        <img class="dialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="dialogPrevPicture()" onkeydown="if(event.code === 'Space' ) { event.preventDefault(); dialogPrevPicture(); }" >
                         <p>${currentDialogIndex + 1}/${myImages.length}</p>
-                        <img class="dialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto" tabindex="0" onclick="dialogNextPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); dialogNextPicture(${currentDialogIndex});}">
+                        <img class="dialogImageNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto" tabindex="0" onclick="dialogNextPicture()" onkeydown="if(event.code === 'Space') { event.preventDefault(); dialogNextPicture();}">
                     </footer>
                 </div>
             </div>
@@ -73,45 +73,35 @@ function bubblingProtection(event) {
     event.stopPropagation()
 }
 
-function dialogNextPicture(currentDialogIndex) {
-    currentDialogIndex++;
-    if (currentDialogIndex >= myImages.length) {
-        currentDialogIndex = 0;
-
-    }
-
-
-    myDialogFunction(currentDialogIndex);
-
-    setTimeout(() => {
-        document.querySelector(".dialogNext").focus();
-    }, 0);
+function dialogNextPicture() {
+    changeDialogPicture(1, ".dialogImageNext")
 }
 
-function dialogPrevPicture(currentDialogIndex) {
-    currentDialogIndex--;
-    if (currentDialogIndex < 0) {
-        currentDialogIndex = myImages.length - 1;
-
-    }
-
-    myDialogFunction(currentDialogIndex);
-
-    setTimeout(() => {
-        document.querySelector(".dialogImageBack").focus();
-    }, 0);
+function dialogPrevPicture() {
+    changeDialogPicture(-1, ".dialogImageBack")
 }
 
 function dialogKeyNavigation(event) {
     if (event.code === "ArrowLeft") {
         event.preventDefault();
-        dialogPrevPicture(currentDialogIndex);
+        dialogPrevPicture();
     }
 
     if (event.code === "ArrowRight") {
         event.preventDefault();
-        dialogNextPicture(currentDialogIndex);
+        dialogNextPicture();
     }
+}
+
+function changeDialogPicture(step, selectFocus) {
+    currentDialogIndex =
+        (currentDialogIndex + step + myImages.length) % myImages.length;
+
+    myDialogFunction(currentDialogIndex);
+
+    setTimeout(() => {
+        document.querySelector(selectFocus)?.focus();
+    }, 0);
 }
 
 
