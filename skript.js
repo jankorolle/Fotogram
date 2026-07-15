@@ -57,7 +57,7 @@ function myDialogHTML() {
                         <img class="dialogButtonclose" src=./IMG/close.png  tabindex="0"  aria-label="Dialog Schließen" onclick="closeDialog()" onkeydown="if(event.code === 'Space') { event.preventDefault(); closeDialog();}">
                     </header>
                     <section>
-                        <img class="dialogImg" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}"><img>
+                        <img class="dialogImg" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}">
                     </section>
                     <footer class=dialogfooter>
                         <img class="dialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="dialogPrevPicture()" onkeydown="if(event.code === 'Space' ) { event.preventDefault(); dialogPrevPicture(); }" >
@@ -103,6 +103,3 @@ function changeDialogPicture(step, selectFocus) {
         document.querySelector(selectFocus)?.focus();
     }, 0);
 }
-
-
-
