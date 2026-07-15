@@ -14,8 +14,6 @@ let myImages = [
 
 let currentDialogIndex = 0;
 
-
-
 function galleryFunction() {
     let galleryList = document.getElementById('gallery');
     galleryList.innerHTML = ""
@@ -49,38 +47,33 @@ function myDialogFunction(galleryindex) {
     DialogList.innerHTML = "";
     currentDialogIndex = galleryindex;
     DialogList.innerHTML = myDialogHTML(currentDialogIndex);
-
-
-
 }
 
 function myDialogHTML(currentDialogIndex) {
-    return `<div class="dialogBody" onclick="BubblingProtection(event)" >
+    return `<div class="dialogBody" onclick="bubblingProtection(event)" >
                 <div class="dialogContent">
                     <header class="dialogheader">
                         <p class="dialogFileName">${myImages[currentDialogIndex]}</p>
                         <img class="dialogButtonclose" src=./IMG/close.png  tabindex="0"  aria-label="Dialog Schließen" onclick="closeDialog()" onkeydown="if(event.code === 'Space') { event.preventDefault(); closeDialog();}">
                     </header>
                     <section>
-                        <img class="dialogImg" tabindex="0" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}"><img>
+                        <img class="dialogImg" src=./gallery/${myImages[currentDialogIndex]} alt="Picture number ${currentDialogIndex + 1}"><img>
                     </section>
                     <footer class=dialogfooter>
-                        <img class="DialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="DialogPrevPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); DialogPrevPicture(${currentDialogIndex}); }" >
+                        <img class="dialogImageBack" src=./IMG/Arrow-Right.png aria-label="Vorheriges Foto" tabindex="0" onclick="dialogPrevPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); dialogPrevPicture(${currentDialogIndex}); }" >
                         <p>${currentDialogIndex + 1}/${myImages.length}</p>
-                        <img class="DialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto" tabindex="0" onclick="DialogNextPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); DialogNextPicture(${currentDialogIndex});}">
+                        <img class="dialogNext" src=./IMG/Arrow-Right.png aria-label="Nächstes Foto" tabindex="0" onclick="dialogNextPicture(${currentDialogIndex})" onkeydown="if(event.code === 'Space') { event.preventDefault(); dialogNextPicture(${currentDialogIndex});}">
                     </footer>
                 </div>
             </div>
             `
-
-
 }
 
-function BubblingProtection(event) {
+function bubblingProtection(event) {
     event.stopPropagation()
 }
 
-function DialogNextPicture(currentDialogIndex) {
+function dialogNextPicture(currentDialogIndex) {
     currentDialogIndex++;
     if (currentDialogIndex >= myImages.length) {
         currentDialogIndex = 0;
@@ -91,12 +84,11 @@ function DialogNextPicture(currentDialogIndex) {
     myDialogFunction(currentDialogIndex);
 
     setTimeout(() => {
-        document.querySelector(".DialogNext").focus();
+        document.querySelector(".dialogNext").focus();
     }, 0);
-
 }
 
-function DialogPrevPicture(currentDialogIndex) {
+function dialogPrevPicture(currentDialogIndex) {
     currentDialogIndex--;
     if (currentDialogIndex < 0) {
         currentDialogIndex = myImages.length - 1;
@@ -106,19 +98,19 @@ function DialogPrevPicture(currentDialogIndex) {
     myDialogFunction(currentDialogIndex);
 
     setTimeout(() => {
-        document.querySelector(".DialogImageBack").focus();
+        document.querySelector(".dialogImageBack").focus();
     }, 0);
-
 }
+
 function dialogKeyNavigation(event) {
     if (event.code === "ArrowLeft") {
         event.preventDefault();
-        DialogPrevPicture(currentDialogIndex);
+        dialogPrevPicture(currentDialogIndex);
     }
 
     if (event.code === "ArrowRight") {
         event.preventDefault();
-        DialogNextPicture(currentDialogIndex);
+        dialogNextPicture(currentDialogIndex);
     }
 }
 

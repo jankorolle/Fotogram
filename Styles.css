@@ -1,6 +1,5 @@
         html {
             scroll-behavior: Smooth;
-
         }
 
         body {
@@ -20,13 +19,9 @@
             font-size: 67px;
         }
 
-
-
         h2 {
             display: flex;
             font-weight: bold;
-            font-size: 80px;
-            color: #9F0908;
             justify-content: center;
             margin: 0;
         }
@@ -37,24 +32,21 @@
             display: flex;
             justify-content: start;
             background-color: #09212A;
-
         }
 
         .logo {
             align-self: center;
         }
 
-        .Logotext {
+        .logotext {
             font-size: 45px;
             font-weight: bold;
             color: #ffffff;
             align-self: center;
-
         }
 
         p {
             margin: 0px;
-
         }
 
         main {
@@ -64,7 +56,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
         }
 
         .gallery {
@@ -76,14 +67,16 @@
         .galleryImg {
             width: 150px;
             height: 150px;
-            box-sizing: 2px;
             border-color: #124658;
             border-radius: 16px;
             margin-right: 16px;
+            object-fit: cover;
+        }
+        .galleryImg:hover {
+            opacity: 0.3;
         }
 
         dialog {
-
             color: #ffffff;
             padding: 0px;
             border: 0px;
@@ -96,7 +89,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
         }
 
         dialog.opened {
@@ -114,7 +106,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
         }
 
         dialog::backdrop {
@@ -122,7 +113,6 @@
             background-color: rgb(0, 0, 0);
             transition: all 1s ease-in;
         }
-
 
         dialog.opened::backdrop {
             opacity: .5;
@@ -156,12 +146,9 @@
             justify-content: space-between;
         }
 
-
         .dialogButtonclose {
-
             width: 24px;
             height: 24px;
-
         }
 
         .dialogButtonclose:hover {
@@ -193,32 +180,27 @@
             align-items: center;
         }
 
-        .DialogImageBack {
+        .dialogImageBack {
             border-radius: 50%;
             background-color: #382428;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             transform: rotateY(180deg);
-
         }
 
-        .DialogImageBack:hover {
+        .dialogImageBack:hover {
             background-color: #1e1e23;
         }
 
-        .DialogNext {
+        .dialogNext {
             border-radius: 50%;
             background-color: #382428;
-            width: 60px;
-            height: 60px;
-
-
+            width: 50px;
+            height: 50px;
         }
 
-        .DialogNext:hover {
+        .dialogNext:hover {
             background-color: #1e1e23;
-
-
         }
 
         .footer {
@@ -231,8 +213,6 @@
             flex-direction: column;
             background-color: #09212A;
             padding-bottom: 10px;
-
-
         }
 
         .footerBox {
@@ -247,21 +227,28 @@
         .footerLogo {
             margin: 0px;
             width: 133.28px;
-
-
         }
 
         .footerText {
             font-size: 14px;
             color: #99ACB3;
             align-self: center;
+        }
+
+        @media (Max-width: 800px) {
+
+            h1 {
+                font-size: 35px;
+            }
 
         }
+
+
 
         @media (Max-width: 600px) {
 
             h1 {
-                font-size: 55px;
+                font-size: 25px;
 
             }
 
@@ -270,11 +257,11 @@
                 padding-left: 80px;
             }
 
-            .Logotext {
+            .logotext {
                 font-size: 45px;
             }
 
-            .MainContent {
+            .mainContent {
                 padding-left: 80px;
                 padding-right: 80px;
             }
@@ -284,21 +271,14 @@
                 height: 150px;
             }
 
-
             .dialogFileName {
                 font-size: 10px
             }
 
             .dialogButtonclose {
-
                 width: 14px;
                 height: 14px;
-
             }
-
-
-
-
 
             dialog,
             dialog.opened {
@@ -318,8 +298,8 @@
 
             .DialogImageBack,
             .DialogNext {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
             }
 
             .footer {
@@ -333,10 +313,7 @@
             .footerText {
                 font-size: 14px;
             }
-
         }
-
-
 
         @media (max-width: 500px) {
 
@@ -349,18 +326,22 @@
                 padding-left: 20px;
             }
 
-            .Logotext {
+            .logotext {
                 font-size: 32px;
             }
 
-            .MainContent {
+            main {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            .mainContent {
                 padding-left: 20px;
                 padding-right: 20px;
-
             }
 
             h1 {
-                font-size: 40px;
+                font-size: 20px;
             }
 
             h2 {
